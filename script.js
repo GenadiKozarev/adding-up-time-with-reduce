@@ -24,3 +24,6 @@ const formatTime = seconds => {
     `;
 };
 console.log(formatTime(seconds));
+const totalDuration = formatTime(seconds);
+const total = document.querySelector('h3');
+total.innerText += ` ${totalDuration}`;
