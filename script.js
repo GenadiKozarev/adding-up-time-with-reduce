@@ -10,4 +10,17 @@ const seconds = timeNodes
         // and convert both to numbers using parseFloat
         const [min, sec] = timeCode.split(':').map(parseFloat);
         return min * 60 + sec;
-    });
+    })
+    .reduce((totalSeconds, videoSeconds) => totalSeconds + videoSeconds);
+// Function to convert seconds to "hh:mm:ss" format
+const formatTime = seconds => {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secondsLeft = seconds % 60;
+    // Use padStart to ensure two-digit format for minutes and seconds
+    return `${hours}:${
+        minutes.toString().padStart(2, '0')}:${
+        secondsLeft.toString().padStart(2, '0')}
+    `;
+};
+console.log(formatTime(seconds));
